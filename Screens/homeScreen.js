@@ -6,8 +6,23 @@ import Card from '../Components/card';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 
-
 const HomeScreen = props => {
+
+    const bloodGroupPicker = <Picker enabled={showFullCard}
+        selectedValue={selectedBloodGroup}
+        style={styles.dropdownStyle}
+        onValueChange={(itemValue, itemIndex) => setselectedBloodGroup(itemValue)}
+        mode='dropdown'
+    >
+        <Picker.Item label="A+" value="A+" />
+        <Picker.Item label="A-" value="A-" />
+        <Picker.Item label="B+" value="B+" />
+        <Picker.Item label="B-" value="B-" />
+        <Picker.Item label="AB+" value="AB+" />
+        <Picker.Item label="AB-" value="AB-" />
+        <Picker.Item label="O+" value="O-" />
+    </Picker>
+
     const [selectedBloodGroup, setselectedBloodGroup] = useState(" ");
     const [selectedNoofBottles, setselectedNoofBottles] = useState(" ");
     const [selectedRequest, setselectedRequest] = useState(" ");
@@ -21,28 +36,19 @@ const HomeScreen = props => {
         <View>
             <View style={styles.rowItem}>
                 <Text style={styles.dropdownText}>Select Blood Group:</Text>
-                <View style={styles.dowpdownView}>
-                    <Picker enabled={showFullCard}
-                        selectedValue={selectedBloodGroup}
-                        style={styles.dropdownStyle}
-                        onValueChange={(itemValue, itemIndex) => setselectedBloodGroup(itemValue)}
-                        mode='dropdown'
-                    >
-                        <Picker.Item label="A+" value="A+" />
-                        <Picker.Item label="A-" value="A-" />
-                        <Picker.Item label="B+" value="B+" />
-                        <Picker.Item label="B-" value="B-" />
-                        <Picker.Item label="AB+" value="AB+" />
-                        <Picker.Item label="AB-" value="AB-" />
-                        <Picker.Item label="O+" value="O-" />
-                    </Picker>
-                </View>
+                {!showFullCard && <View style={styles.dowpdownView}>
+                    {bloodGroupPicker}
+                </View>}
+                {showFullCard && <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
+                    {bloodGroupPicker}
+                </View>}
+
             </View>
 
             {showFullCard && <View>
                 <View style={styles.rowItem}>
                     <Text style={styles.dropdownText}>No of Bottles:</Text>
-                    <View style={styles.dowpdownView}>
+                    <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
                         <Picker
                             selectedValue={selectedNoofBottles}
                             style={styles.dropdownStyle}
@@ -60,7 +66,7 @@ const HomeScreen = props => {
 
                 <View style={styles.rowItem}>
                     <Text style={styles.dropdownText}>Request to?</Text>
-                    <View style={styles.dowpdownView}>
+                    <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
                         <Picker
                             selectedValue={selectedRequest}
                             style={styles.dropdownStyle}
@@ -74,11 +80,11 @@ const HomeScreen = props => {
                 </View>
 
                 <View style={styles.buttonContainer} >
-                    <View style={styles.button}><Button title='Cancel' color='red' 
-                    onPress={() => setshowFullCard(prevState => !prevState)} /></View>
+                    <View style={styles.button}><Button title='Cancel' color='red'
+                        onPress={() => setshowFullCard(prevState => !prevState)} /></View>
 
-                    <View style={styles.button}><Button title='Send' color='red' 
-                    onPress= {() => props.navigation.navigate('D')} /></View>
+                    <View style={styles.button}><Button title='Send' color='red'
+                        onPress={() => props.navigation.navigate('D')} /></View>
                 </View>
 
             </View>}
@@ -143,10 +149,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
+        marginLeft: '10%'
+    },
+    dowpdownViewBorder: {
         borderColor: 'white',
         borderWidth: 2,
-        marginLeft: '10%'
-
     },
     dropdownStyle: {
         color: 'white',

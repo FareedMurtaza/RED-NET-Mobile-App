@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
 import CustomHeaderButton from '../Components/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import FriendsList from '../Components/friendsList';
 import { FRIENDS } from '../data/dummydata';
+import { useSelector } from 'react-redux';
 
 const FriendsScreen = props => {
-    const friends= FRIENDS.filter(frnd => frnd.id == '1' || frnd.id === '2' || frnd.id == '3' || frnd.id === '4' || frnd.id === '5')
+    const friendsList= useSelector(state =>  state.friends.userFriends);
 
-    return <FriendsList friendsData= {friends} navigation={props.navigation} />
+    return <FriendsList friendsData= {friendsList} navigation={props.navigation} />
 }
 
 FriendsScreen.navigationOptions = navData => {

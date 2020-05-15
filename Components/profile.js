@@ -1,61 +1,50 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const ProfileInfo = props => {
+    return (
+        <View style={styles.screen}>
+            <View style={styles.topInfo}>
+                <Image source={{ uri: props.personData.profilePic }} style={styles.image} />
+                <Text style={styles.name}> {props.personData.name} </Text>
+            </View>
 
-    const renderProfileInfo = itemData => {
-        return (
-            <View style={styles.screen}>
-                <View style={styles.topInfo}>
-                    <Image source={{ uri: itemData.item.profilePic }} style={styles.image} />
-                    <Text style={styles.name}> {itemData.item.name} </Text>
+            <View style={styles.downInfo}>
+                <View style={styles.rowItemInfoContainer} >
+                    <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
+                        <Text style={styles.infoItem}>email:</Text>
+                        <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{props.personData.email}</Text></View>
+                    </View>
+
+                    <View style={styles.alignCenter} >
+                        <View style={styles.divider} />
+                    </View>
                 </View>
 
-                <View style={styles.downInfo}>
-                    <View style={styles.rowItemInfoContainer} >
-                        <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
-                            <Text style={styles.infoItem}>email:</Text>
-                            <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{itemData.item.email}</Text></View>
-                        </View>
-
-                        <View style={styles.alignCenter} >
-                            <View style={styles.divider} />
-                        </View>
+                <View style={styles.rowItemInfoContainer} >
+                    <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
+                        <Text style={styles.infoItem}>blood Group:</Text>
+                        <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{props.personData.bloodGroup}</Text></View>
                     </View>
 
-                    <View style={styles.rowItemInfoContainer} >
-                        <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
-                            <Text style={styles.infoItem}>blood Group:</Text>
-                            <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{itemData.item.bloodGroup}</Text></View>
-                        </View>
+                    <View style={styles.alignCenter} >
+                        <View style={styles.divider} />
+                    </View>
+                </View>
 
-                        <View style={styles.alignCenter} >
-                            <View style={styles.divider} />
-                        </View>
+                <View style={styles.rowItemInfoContainer} >
+                    <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
+                        <Text style={styles.infoItem}>phone No:</Text>
+                        <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{props.personData.phoneNo}</Text></View>
                     </View>
 
-                    <View style={styles.rowItemInfoContainer} >
-                        <View style={{ ...styles.rowItem, ...styles.alignCenter }}>
-                            <Text style={styles.infoItem}>phone No:</Text>
-                            <View style={styles.leftInfo}><Text style={{ fontSize: 18 }}>{itemData.item.phoneNo}</Text></View>
-                        </View>
-
-                        <View style={styles.alignCenter} >
-                            <View style={styles.divider} />
-                        </View>
+                    <View style={styles.alignCenter} >
+                        <View style={styles.divider} />
                     </View>
                 </View>
             </View>
-        )
-    }
-
-    return (
-        <FlatList
-            data={props.personData}
-            renderItem={renderProfileInfo}
-        />
+        </View>
     )
-
 }
 
 const styles = StyleSheet.create({

@@ -1,12 +1,13 @@
 import React from 'react';
-import CustomHeaderButton from '../Components/HeaderButton';
+import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import CustomHeaderButton from '../Components/HeaderButton';
+
 import ProfileInfo from '../Components/profile';
-import { PROFILE } from '../data/dummydata';
 
 const ProfileScreen = props => {
 
-    const account = PROFILE.filter(item => item.id === '1');
+    const account = useSelector(state => state.profile.userProfile )
 
     return <ProfileInfo personData={account} navigation={props.navigation} />
 }
