@@ -1,34 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { View, Text, StyleSheet, Picker, Button } from 'react-native';
 import CustomHeaderButton from '../Components/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import Card from '../Components/card';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import Card from '../Components/card';
 
+import * as DonorActions from '../Store/Actions/donor';
 
 const HomeScreen = props => {
-
-    const bloodGroupPicker = <Picker enabled={showFullCard}
-        selectedValue={selectedBloodGroup}
-        style={styles.dropdownStyle}
-        onValueChange={(itemValue, itemIndex) => setselectedBloodGroup(itemValue)}
-        mode='dropdown'
-    >
-        <Picker.Item label="A+" value="A+" />
-        <Picker.Item label="A-" value="A-" />
-        <Picker.Item label="B+" value="B+" />
-        <Picker.Item label="B-" value="B-" />
-        <Picker.Item label="AB+" value="AB+" />
-        <Picker.Item label="AB-" value="AB-" />
-        <Picker.Item label="O+" value="O-" />
-    </Picker>
-
     const [selectedBloodGroup, setselectedBloodGroup] = useState(" ");
     const [selectedNoofBottles, setselectedNoofBottles] = useState(" ");
     const [selectedRequest, setselectedRequest] = useState(" ");
     const [showFullCard, setshowFullCard] = useState(false);
+    const dispatch = useDispatch();
 
     const bloodRequestHandler = () => {
+        dispatch(DonorActions.bloodRequest(selectedBloodGroup, selectedNoofBottles, selectedRequest));
         props.navigation.navigate('D')
     }
 
@@ -40,15 +29,28 @@ const HomeScreen = props => {
         <View>
             <View style={styles.rowItem}>
                 <Text style={styles.dropdownText}>Select Blood Group:</Text>
-                <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
-                    {bloodGroupPicker}
+                <View style={{ ...styles.dowpdownView, ...styles.dowpdownViewBorder }}>
+                    <Picker enabled={showFullCard}
+                        selectedValue={selectedBloodGroup}
+                        style={styles.dropdownStyle}
+                        onValueChange={(itemValue, itemIndex) => setselectedBloodGroup(itemValue)}
+                        mode='dropdown'
+                    >
+                        <Picker.Item label="A+" value="A+" />
+                        <Picker.Item label="A-" value="A-" />
+                        <Picker.Item label="B+" value="B+" />
+                        <Picker.Item label="B-" value="B-" />
+                        <Picker.Item label="AB+" value="AB+" />
+                        <Picker.Item label="AB-" value="AB-" />
+                        <Picker.Item label="O+" value="O-" />
+                    </Picker>
                 </View>
             </View>
 
             {showFullCard && <View>
                 <View style={styles.rowItem}>
                     <Text style={styles.dropdownText}>No of Bottles:</Text>
-                    <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
+                    <View style={{ ...styles.dowpdownView, ...styles.dowpdownViewBorder }}>
                         <Picker
                             selectedValue={selectedNoofBottles}
                             style={styles.dropdownStyle}
@@ -66,7 +68,7 @@ const HomeScreen = props => {
 
                 <View style={styles.rowItem}>
                     <Text style={styles.dropdownText}>Request to?</Text>
-                    <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
+                    <View style={{ ...styles.dowpdownView, ...styles.dowpdownViewBorder }}>
                         <Picker
                             selectedValue={selectedRequest}
                             style={styles.dropdownStyle}
