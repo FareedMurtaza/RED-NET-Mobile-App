@@ -7,31 +7,71 @@ export const FRIENDS = [
         '1',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
         'Fareed Murtaza', 
-        'A+'
+        'A+', 
+        '0320-8482564'
     ), 
     new Friend(
         '2',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
         'Irtaza Nadeem', 
-        'A-'
+        'A+',
+        '0320-1234567'
     ), 
     new Friend(
         '3',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
         'Shaheer Ramzan', 
-        'AB+'
+        'AB+',
+        '0321-1954672'
     ), 
     new Friend(
         '4',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
         'M Faizan', 
-        'AB-'
+        'A+',
+        '0320-1234567'
     ), 
     new Friend(
         '5',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
         'Azan Arif', 
-        'B+'
+        'B+',
+        '0320-1234567'
+    ), 
+    new Friend(
+        '6',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'Fareed Murtazaa', 
+        'A+',
+        '0320-1234567'
+    ), 
+    new Friend(
+        '7',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'Irtaza Nadeemm', 
+        'A+',
+        '0320-1234567'
+    ), 
+    new Friend(
+        '8',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'Shaheer Ramzan', 
+        'AB+',
+        '0320-1234567'
+    ), 
+    new Friend(
+        '9',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'M Faizan', 
+        'A+',
+        '0320-1234567'
+    ), 
+    new Friend(
+        '10',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+        'Azan Arif', 
+        'B+',
+        '0320-1234567'
     ), 
 ]
 

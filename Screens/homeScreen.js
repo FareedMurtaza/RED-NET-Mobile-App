@@ -36,13 +36,9 @@ const HomeScreen = props => {
         <View>
             <View style={styles.rowItem}>
                 <Text style={styles.dropdownText}>Select Blood Group:</Text>
-                {!showFullCard && <View style={styles.dowpdownView}>
+                <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
                     {bloodGroupPicker}
-                </View>}
-                {showFullCard && <View style={{...styles.dowpdownView, ...styles.dowpdownViewBorder}}>
-                    {bloodGroupPicker}
-                </View>}
-
+                </View>
             </View>
 
             {showFullCard && <View>

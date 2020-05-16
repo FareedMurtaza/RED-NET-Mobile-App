@@ -1,25 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import CustomHeaderButton from '../Components/HeaderButton';
-import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import DonorList from '../Components/donorList';
+import { useSelector } from 'react-redux';
+import { FRIENDS } from '../data/dummydata';
 
 const DonorsScreen = props => {
-    return (
-        <View style={styles.screen}>
-            <Text>
-                This is DonorList page.
-        </Text>
-        </View>
-    )
+    const donorsList= FRIENDS.filter(item => item.bloodGroup === 'A+')
+
+    return <DonorList donorsListData={donorsList} />
 }
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-})
-
 export default DonorsScreen;
