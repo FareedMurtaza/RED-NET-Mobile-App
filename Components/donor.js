@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, TouchableNativeFeedback, Image, Button, Alert, 
 const Donor = props => {
 
     const [showUserDetail, setshowUserDetail] = useState(false)
+    const [showMessageBox, setshowMessageBox] = useState(false)
+
     const [userName, setuserName] = useState('nobody')
     const [userPhone, setuserPhone] = useState('')
     const [userBloodGroup, setuserBloodGroup] = useState('')
@@ -30,6 +32,9 @@ const Donor = props => {
     const phoneCallHandler = () => {
         Linking.openURL(`tel:${props.item.phoneNo}`)
     }
+    const messageHandler = () => {
+        Linking.openURL(`sms:${props.item.phoneNo}?sms_body= ' '`)
+    }
 
     return (
         <TouchableNativeFeedback>
@@ -53,7 +58,9 @@ const Donor = props => {
                     <View style={styles.button}><Button title='Call' color='dodgerblue'
                         onPress={phoneCallHandler}
                     /></View>
-                    <View style={styles.button}><Button title='Message' color='dodgerblue' /></View>
+                    <View style={styles.button}><Button title='Message' color='dodgerblue'
+                        onPress={messageHandler}
+                    /></View>
                 </View>
             </View>
         </TouchableNativeFeedback>
@@ -96,11 +103,8 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '30%'
-    }
-
-
-
-    , borderView: {
+    },
+    borderView: {
         borderWidth: 2,
         borderColor: 'dodgerblue',
     }
