@@ -4,8 +4,6 @@ import { StyleSheet, View, Text, TouchableNativeFeedback, Image, Button, Alert, 
 const Donor = props => {
 
     const [showUserDetail, setshowUserDetail] = useState(false)
-    const [showMessageBox, setshowMessageBox] = useState(false)
-
     const [userName, setuserName] = useState('nobody')
     const [userPhone, setuserPhone] = useState('')
     const [userBloodGroup, setuserBloodGroup] = useState('')

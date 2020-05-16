@@ -26,7 +26,11 @@ const HomeScreen = props => {
     const [selectedBloodGroup, setselectedBloodGroup] = useState(" ");
     const [selectedNoofBottles, setselectedNoofBottles] = useState(" ");
     const [selectedRequest, setselectedRequest] = useState(" ");
-    const [showFullCard, setshowFullCard] = useState(false)
+    const [showFullCard, setshowFullCard] = useState(false);
+
+    const bloodRequestHandler = () => {
+        props.navigation.navigate('D')
+    }
 
     const CardView = <View>
         <View style={styles.cardHeader}>
@@ -80,7 +84,7 @@ const HomeScreen = props => {
                         onPress={() => setshowFullCard(prevState => !prevState)} /></View>
 
                     <View style={styles.button}><Button title='Send' color='red'
-                        onPress={() => props.navigation.navigate('D')} /></View>
+                        onPress={bloodRequestHandler} /></View>
                 </View>
 
             </View>}

@@ -6,11 +6,13 @@ import Botomtab from './Navigation/navigator';
 import profileReducer from './Store/Reducers/profile';
 import FriendReducer from './Store/Reducers/friends';
 import NotificationReducer from './Store/Reducers/notification';
+import DonorReducer from './Store/Reducers/donor';
 
 const rootReducer = combineReducers({
   profile: profileReducer, 
   friends: FriendReducer, 
-  notification: NotificationReducer
+  notification: NotificationReducer, 
+  donorsList: DonorReducer
 })
 
 const store = createStore(rootReducer)

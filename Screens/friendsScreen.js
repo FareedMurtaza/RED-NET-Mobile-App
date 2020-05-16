@@ -2,7 +2,6 @@ import React from 'react';
 import CustomHeaderButton from '../Components/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import FriendsList from '../Components/friendsList';
-import { FRIENDS } from '../data/dummydata';
 import { useSelector } from 'react-redux';
 
 const FriendsScreen = props => {
