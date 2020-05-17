@@ -10,9 +10,9 @@ import Card from '../Components/card';
 import * as DonorActions from '../Store/Actions/donor';
 
 const HomeScreen = props => {
-    const [selectedBloodGroup, setselectedBloodGroup] = useState(" ");
-    const [selectedNoofBottles, setselectedNoofBottles] = useState(" ");
-    const [selectedRequest, setselectedRequest] = useState(" ");
+    const [selectedBloodGroup, setselectedBloodGroup] = useState("A+");
+    const [selectedNoofBottles, setselectedNoofBottles] = useState("1");
+    const [selectedRequest, setselectedRequest] = useState("Nearby");
     const [showFullCard, setshowFullCard] = useState(false);
     const dispatch = useDispatch();
 
@@ -172,8 +172,6 @@ const styles = StyleSheet.create({
     },
     button: {
         width: '40%'
-
-
     }
 })
 

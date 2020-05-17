@@ -9,6 +9,7 @@ import FriendsScreen from '../Screens/friendsScreen';
 import NotificationScreen from '../Screens/notificationScreen';
 import ProfileScreen from '../Screens/profileScreen';
 import DonorsScreen from '../Screens/donorListScreen';
+import CustomDrawerComponent from '../Components/customDrawerComponent';
 
 import { Ionicons } from '@expo/vector-icons';
 
@@ -19,19 +20,20 @@ const navOptions = {
     headerTintColor: 'white'
 }
 
-const HomeNavigator = createStackNavigator({ H: { screen: HomeScreen, navigationOptions:{ headerTitle: 'RED NET' }}, 
-D: { screen: DonorsScreen, navigationOptions:{ headerTitle: 'Donors List' }}
+const HomeNavigator = createStackNavigator({
+    H: { screen: HomeScreen, navigationOptions: { headerTitle: 'RED NET' } },
+    D: { screen: DonorsScreen, navigationOptions: { headerTitle: 'Donors List' } }
 },
-    {defaultNavigationOptions: navOptions}
+    { defaultNavigationOptions: navOptions }
 );
-const FriendsNavigator = createStackNavigator({ F: { screen: FriendsScreen, navigationOptions:{ headerTitle: 'Friends' }}},
-    {defaultNavigationOptions: navOptions}
+const FriendsNavigator = createStackNavigator({ F: { screen: FriendsScreen, navigationOptions: { headerTitle: 'Friends' } } },
+    { defaultNavigationOptions: navOptions }
 );
-const NotificationNavigator = createStackNavigator({ N: { screen: NotificationScreen, navigationOptions:{ headerTitle: 'Notifications' }}},
-    {defaultNavigationOptions: navOptions}
+const NotificationNavigator = createStackNavigator({ N: { screen: NotificationScreen, navigationOptions: { headerTitle: 'Notifications' } } },
+    { defaultNavigationOptions: navOptions }
 );
-const ProfileNavigator = createStackNavigator({ P: { screen: ProfileScreen, navigationOptions:{ headerTitle: 'Profile' }}},
-    {defaultNavigationOptions: navOptions}
+const ProfileNavigator = createStackNavigator({ P: { screen: ProfileScreen, navigationOptions: { headerTitle: 'Profile' } } },
+    { defaultNavigationOptions: navOptions }
 );
 
 
@@ -70,8 +72,7 @@ const botomTabNavBar = {
     }
 }
 
-const Botomtab = createMaterialBottomTabNavigator(botomTabNavBar,
-    {
+const Botomtab = createMaterialBottomTabNavigator(botomTabNavBar, {
         shifting: true,
         tabBarOptions: {
             activeBackgroundColor: '#e82a23',
@@ -81,8 +82,10 @@ const Botomtab = createMaterialBottomTabNavigator(botomTabNavBar,
 );
 
 const MainDrawer = createDrawerNavigator({
-    Home: Botomtab, 
-  })
+    Home: Botomtab,
+}, {
+    contentComponent: CustomDrawerComponent
+})
 
 
 export default createAppContainer(MainDrawer);
