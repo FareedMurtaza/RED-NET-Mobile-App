@@ -7,6 +7,8 @@ import profileReducer from './Store/Reducers/profile';
 import FriendReducer from './Store/Reducers/friends';
 import NotificationReducer from './Store/Reducers/notification';
 import DonorReducer from './Store/Reducers/donor';
+import LoginScreen from './Screens/loginScreen';
+import SignupScreen from './Screens/signupScreen';
 
 const rootReducer = combineReducers({
   profile: profileReducer, 
@@ -19,8 +21,10 @@ const store = createStore(rootReducer)
 
 export default function App() {
   return (
-    <Provider store={store} >
-      <Botomtab />
-    </Provider>
+    // <SignupScreen />
+     <LoginScreen />
+    // <Provider store={store} >
+    //   <Botomtab />
+    // </Provider>
   );
 }
