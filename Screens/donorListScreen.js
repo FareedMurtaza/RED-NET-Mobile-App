@@ -17,7 +17,7 @@ const DonorsScreen = props => {
     //     }
     // });
 
-    console.log("donor Screen: " + donorsList);
+    // console.log("donor Screen: " + donorsList);
 
     return <DonorList donorsListData={donorsList} />
 }

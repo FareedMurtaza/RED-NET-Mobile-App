@@ -19,17 +19,21 @@ const SignupScreen = props => {
     const password2Handler = () => {
         setpasswordVisible2(prevState => !prevState)
     }
-    const maleRadioButtonHandler = () => {   
+    const maleRadioButtonHandler = () => {
         setmaleRadioButton(prevState => !prevState)
-        if(femaleRadioButton){
+        if (femaleRadioButton) {
             setfemaleRadioButton(false)
         }
     }
-    const femaleRadioButtonHandler = () => {   
+    const femaleRadioButtonHandler = () => {
         setfemaleRadioButton(prevState => !prevState)
-        if(maleRadioButton){
+        if (maleRadioButton) {
             setmaleRadioButton(false)
         }
+    }
+    
+    const SignupButtonHandler = () => {
+        props.navigation.navigate('Rednet')
     }
 
     return (
@@ -121,7 +125,11 @@ const SignupScreen = props => {
 
                 <View style={{ alignItems: 'center', marginTop: '15%' }}>
                     <Text style={{ fontSize: 22, color: 'white' }}>Already have an Account? </Text>
-                    <Text style={{ fontSize: 22, color: 'white', textDecorationLine: 'underline', color: '#16e0ae' }}>Sign in</Text>
+                    <Text style={{ fontSize: 22, color: 'white', textDecorationLine: 'underline', color: '#16e0ae' }}
+                        onPress={() => props.navigation.navigate('Login')}
+                    >
+                        Sign in
+                    </Text>
                 </View>
             </View>
             }
@@ -177,7 +185,7 @@ const SignupScreen = props => {
                     <View style={{ ...styles.input, ...{ flexDirection: 'row', flex: 1, alignItems: 'center' } }}>
                         <Text style={{ color: 'white' }}>Gender:</Text>
 
-                        <View style= {{ flex: 1, justifyContent: 'space-between', flexDirection: 'row', marginLeft: 20 }}>
+                        <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'row', marginLeft: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={{ color: 'white' }}>Male</Text>
                                 <RadioButton
@@ -209,7 +217,7 @@ const SignupScreen = props => {
                     <View style={{ ...styles.input, ...{ flexDirection: 'row', flex: 1, alignItems: 'center' } }}>
                         <Text style={{ color: 'white' }}>Registered as:</Text>
 
-                        <View style= {{ flex: 1, justifyContent: 'space-between', flexDirection: 'column', marginLeft: 20 }}>
+                        <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'column', marginLeft: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={{ color: 'white', width: '70%' }}>Blood Donor</Text>
                                 <RadioButton
@@ -234,7 +242,7 @@ const SignupScreen = props => {
                 </View>
 
                 <View style={{ ...styles.button, ...{ marginTop: 20 } }} >
-                    <Button title='Sign up' color='#181c1b' onPress={() => {}} />
+                    <Button title='Sign up' color='#181c1b' onPress={SignupButtonHandler} />
                 </View>
 
                 <View style={{ ...styles.button, ...{ marginTop: 20 } }} >
@@ -249,7 +257,7 @@ const SignupScreen = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: '#1d2120',
+        backgroundColor: '#1d2120'
     },
     text: {
         color: 'white'
@@ -259,8 +267,8 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '70%',
-        height: 70,
-        marginTop: '20%',
+        height: 80,
+        marginTop: '15%'
     },
     inputContainer: {
         margin: 30,

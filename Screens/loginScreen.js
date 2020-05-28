@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text, TextInput, KeyboardAvoidingView, CheckBox, Button } from 'react-native';
+import { StyleSheet, View, Image, Text, TextInput, KeyboardAvoidingView, CheckBox, Button, StatusBar } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const LoginScreen = props => {
-    const [isSelected, setisSelected] = useState(false);
+    const [isSelected, setisSelected] = useState(true);
+
+    const SigninButtonHandler = () => {
+        props.navigation.navigate('Rednet')
+    }
 
     return (
         <KeyboardAvoidingView
@@ -55,7 +59,7 @@ const LoginScreen = props => {
                 </View>
 
                 <View style={styles.button} >
-                    <Button title='Sign in' color='#181c1b' />
+                    <Button title='Sign in' color='#181c1b' onPress={SigninButtonHandler} />
                 </View>
                 <View style={{ alignItems: 'center', marginTop: 10 }}>
                     <Text style={{ fontSize: 25, color: 'white', textDecorationLine: 'underline' }}>Forget Password?</Text>
@@ -63,7 +67,11 @@ const LoginScreen = props => {
                 <View style={{ alignItems: 'center', marginTop: '15%' }}>
                     <Text>
                         <Text style={{ fontSize: 22, color: 'white' }}>No Account? </Text>
-                        <Text style={{ fontSize: 22, color: 'white', textDecorationLine: 'underline', color: '#16e0ae' }}>Create one</Text>
+                        <Text style={{ fontSize: 22, color: 'white', textDecorationLine: 'underline', color: '#16e0ae' }}
+                            onPress={() => props.navigation.navigate('Signup')}
+                        >
+                            Create one
+                        </Text>
                     </Text>
                 </View>
             </View>

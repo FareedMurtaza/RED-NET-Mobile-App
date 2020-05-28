@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -12,6 +12,8 @@ import DonorsScreen from '../Screens/donorListScreen';
 import CustomDrawerComponent from '../Components/customDrawerComponent';
 
 import { Ionicons } from '@expo/vector-icons';
+import LoginScreen from '../Screens/loginScreen';
+import SignupScreen from '../Screens/signupScreen';
 
 const navOptions = {
     headerStyle: {
@@ -73,12 +75,12 @@ const botomTabNavBar = {
 }
 
 const Botomtab = createMaterialBottomTabNavigator(botomTabNavBar, {
-        shifting: true,
-        tabBarOptions: {
-            activeBackgroundColor: '#e82a23',
-            activeTintColor: 'white'
-        }
+    shifting: true,
+    tabBarOptions: {
+        activeBackgroundColor: '#e82a23',
+        activeTintColor: 'white'
     }
+}
 );
 
 const MainDrawer = createDrawerNavigator({
@@ -87,5 +89,21 @@ const MainDrawer = createDrawerNavigator({
     contentComponent: CustomDrawerComponent
 })
 
+const AuthNavigator = createStackNavigator({
+    Login: LoginScreen, 
+    Signup: SignupScreen
+},
+    {
+        defaultNavigationOptions: {
+            headerShown: false
+        }
+    }
+)
 
-export default createAppContainer(MainDrawer);
+const MainNavigator = createSwitchNavigator({
+    Auth: AuthNavigator,
+    Rednet: MainDrawer
+})
+
+
+export default createAppContainer(MainNavigator);
