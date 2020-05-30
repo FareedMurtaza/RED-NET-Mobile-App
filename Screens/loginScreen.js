@@ -43,6 +43,7 @@ const LoginScreen = props => {
                         label='password'
                         keyboardType='default'
                         placeholder='Enter Password'
+                        secureTextEntry= {true}
                         style={styles.input}
                     />
                 </View>

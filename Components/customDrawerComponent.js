@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, ScrollView, Switch, Alert } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, ScrollView, Switch, Alert, TouchableNativeFeedback } from 'react-native';
 import { useSelector } from 'react-redux';
-import { MaterialCommunityIcons, Ionicons, Entypo, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons, Entypo, MaterialIcons } from '@expo/vector-icons';
 
 const CustomDrawerComponent = props => {
     const [isMute, setisMute] = useState(false);
@@ -46,15 +46,15 @@ const CustomDrawerComponent = props => {
                     />
                 </View>
             </View>
-            
-            <View style={{...styles.rowItem, ...{marginLeft: 10}}}>
+
+            <View style={{ ...styles.rowItem, ...{ marginLeft: 10 } }}>
                 <View style={{ flexDirection: 'row' }}>
                     <MaterialIcons name="history" size={25} />
                     <Text style={styles.rowFontStyle}>History</Text>
                 </View>
             </View>
-            
-            <View style={{...styles.rowItem, ...{marginLeft: 10}}}>
+
+            <View style={{ ...styles.rowItem, ...{ marginLeft: 10 } }}>
                 <View style={{ flexDirection: 'row' }}>
                     <MaterialIcons name="block" size={25} />
                     <Text style={styles.rowFontStyle}>Block User</Text>
@@ -63,12 +63,14 @@ const CustomDrawerComponent = props => {
 
             <View style={styles.divider} />
 
-            <View style={styles.rowItem}>
-                <View style={{ flexDirection: 'row' }}>
-                    <MaterialCommunityIcons name="logout" size={30} />
-                    <Text style={styles.rowFontStyle}>Log out</Text>
+            <TouchableNativeFeedback onPress={() => props.navigation.navigate('Login')}>
+                <View style={styles.rowItem} >
+                    <View style={{ flexDirection: 'row' }}>
+                        <MaterialCommunityIcons name="logout" size={30} />
+                        <Text style={styles.rowFontStyle}>Log out</Text>
+                    </View>
                 </View>
-            </View>
+            </TouchableNativeFeedback>
             <View style={styles.rowItem}>
                 <View style={{ flexDirection: 'row' }}>
                     <Ionicons name="md-settings" size={30} />
