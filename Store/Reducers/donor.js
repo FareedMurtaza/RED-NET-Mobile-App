@@ -13,7 +13,6 @@ export default (state = initialState, action) => {
             const RequestTo = action.RequestTo;
 
             let donorsList = FRIENDS.filter(item => item.bloodGroup === bloodGroup)
-            console.log(donorsList);
 
             return {
                 ...state,

@@ -42,7 +42,7 @@ const MapViewComponent = props => {
       } catch (err) {
         Alert.alert(
           'Could not fetch location!',
-          'Please try again later or pick a location on the map.',
+          'Please try again later.',
           [{ text: 'Okay' }]
         );
         setlocationFetched(false);

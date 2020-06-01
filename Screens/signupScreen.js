@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, KeyboardAvoidingView, Button, Picker } from 'react-native';
 import { MaterialIcons, Ionicons, Fontisto, FontAwesome5, Foundation } from '@expo/vector-icons';
-import { RadioButton } from 'react-native-paper';
+import { RadioButton, Checkbox } from 'react-native-paper';
 
 const SignupScreen = props => {
     const [passwordVisible1, setpasswordVisible1] = useState(false);
@@ -31,7 +31,6 @@ const SignupScreen = props => {
             setmaleRadioButton(false)
         }
     }
-    
     const SignupButtonHandler = () => {
         props.navigation.navigate('Rednet')
     }
@@ -61,14 +60,14 @@ const SignupScreen = props => {
 
                 <View style={styles.inputField}>
                     <View style={styles.icon}>
-                        <MaterialIcons name='email' size={30} color='white' />
+                        <MaterialIcons name='call' size={30} color='white' />
                     </View>
 
                     <TextInput
-                        id="email"
-                        label='email'
-                        keyboardType='default'
-                        placeholder='Enter Email'
+                        id="phoneno"
+                        label='phoneno'
+                        keyboardType='number-pad'
+                        placeholder='Enter Phone no'
                         style={styles.input}
                     />
                 </View>
@@ -137,14 +136,14 @@ const SignupScreen = props => {
             {moreUserDetails && <View style={styles.inputContainer}>
                 <View style={styles.inputField}>
                     <View style={styles.icon}>
-                        <MaterialIcons name='call' size={30} color='white' />
+                        <MaterialIcons name='email' size={30} color='white' />
                     </View>
 
                     <TextInput
-                        id="phoneno"
-                        label='phoneno'
-                        keyboardType='number-pad'
-                        placeholder='Enter Phone no'
+                        id="email"
+                        label='email'
+                        keyboardType='default'
+                        placeholder='Enter Email'
                         style={styles.input}
                     />
                 </View>
@@ -220,20 +219,18 @@ const SignupScreen = props => {
                         <View style={{ flex: 1, justifyContent: 'space-between', flexDirection: 'column', marginLeft: 20 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={{ color: 'white', width: '70%' }}>Blood Donor</Text>
-                                <RadioButton
-                                    value="bloodDonorRadioButton"
+                                <Checkbox
                                     uncheckedColor='white'
-                                    status={bloodDonorRB === false ? 'unchecked' : 'checked'}
+                                    status={bloodDonorRB === false ? 'unchecked' : 'checked' }
                                     onPress={() => setbloodDonorRB(prevState => !prevState)}
                                 />
                             </View>
 
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={{ color: 'white', width: '70%' }}>Conveyance Volunteer</Text>
-                                <RadioButton
-                                    value="conveyanceVolunteerRadioButton"
+                                <Checkbox
                                     uncheckedColor='white'
-                                    status={ConveyanceVolunteerRB === false ? 'unchecked' : 'checked'}
+                                    status={ConveyanceVolunteerRB === false ? 'unchecked' : 'checked' }
                                     onPress={() => setConveyanceVolunteerRB(prevState => !prevState)}
                                 />
                             </View>

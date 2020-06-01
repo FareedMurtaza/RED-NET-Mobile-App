@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TextInput, KeyboardAvoidingView, CheckBox, Button, StatusBar } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Checkbox } from 'react-native-paper';
 
 const LoginScreen = props => {
-    const [isSelected, setisSelected] = useState(true);
+    const [isSelected, setisSelected] = useState(false);
 
     const SigninButtonHandler = () => {
         props.navigation.navigate('Rednet')
@@ -43,19 +44,18 @@ const LoginScreen = props => {
                         label='password'
                         keyboardType='default'
                         placeholder='Enter Password'
-                        secureTextEntry= {true}
+                        secureTextEntry={true}
                         style={styles.input}
                     />
                 </View>
 
                 <View style={styles.rememberMe}>
                     <Text style={{ color: 'white' }}>Remember me</Text>
-
-                    <CheckBox
-                        value={isSelected}
-                        onValueChange={setisSelected}
-                        borderColor='white'
-                        style={styles.checkbox}
+                    
+                    <Checkbox
+                        uncheckedColor='white'
+                        status={isSelected === false ? 'unchecked' : 'checked'}
+                        onPress={() => setisSelected(prevState => !prevState)}
                     />
                 </View>
 
