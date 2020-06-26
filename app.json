@@ -20,10 +20,12 @@
       "assets/**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.team.rednet",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": { 
+      "package": "com.team.rednet",
       "versionCode": 1,
       "permissions": [
         "ACCESS_FINE_LOCATION"
