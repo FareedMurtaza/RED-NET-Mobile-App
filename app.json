@@ -1,9 +1,8 @@
 {
   "expo": {
-    "name": "RED_NET",
-    "slug": "RED_NET",
+    "name": "RED NET",
+    "slug": "red-net",
     "platforms": [
-      "ios",
       "android"
     ],
     "android": {
@@ -12,7 +11,7 @@
     },
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -22,7 +21,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/**/*"
     ],
     "ios": {
       "supportsTablet": true,
