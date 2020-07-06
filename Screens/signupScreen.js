@@ -13,11 +13,24 @@ const SignupScreen = props => {
     const [femaleRadioButton, setfemaleRadioButton] = useState(false);
     const [bloodDonorRB, setbloodDonorRB] = useState(false);
     const [ConveyanceVolunteerRB, setConveyanceVolunteerRB] = useState(false);
+    const [genderSelected, setgenderSelected] = useState(true);
+    
+    const [userName, setuserName] = useState('');
+    const [phoneNo, setphoneNo] = useState('');
+    const [password1, setpassword1] = useState('');
+    const [password2, setpassword2] = useState('');
+    const [emptyName, setemptyName] = useState(false);
+    const [emptyphoneNo, setemptyphoneNo] = useState(false);
+    const [emptypassword1, setemptypassword1] = useState(false);
+    const [emptypassword2, setemptypassword2] = useState(false);
+    const [passwordMatch, setpasswordMatch] = useState(true);
 
-    const password1Handler = () => {
+    const [validPhoneno, setvalidPhoneno] = useState(true);
+
+    const password1SecurityHandler = () => {
         setpasswordVisible1(prevState => !prevState)
     }
-    const password2Handler = () => {
+    const password2SecurityHandler = () => {
         setpasswordVisible2(prevState => !prevState)
     }
     const maleRadioButtonHandler = () => {
@@ -25,42 +38,105 @@ const SignupScreen = props => {
         if (femaleRadioButton) {
             setfemaleRadioButton(false)
         }
+        setgenderSelected(true);
     }
     const femaleRadioButtonHandler = () => {
         setfemaleRadioButton(prevState => !prevState)
         if (maleRadioButton) {
             setmaleRadioButton(false)
         }
+        setgenderSelected(true);
     }
     const SignupButtonHandler = () => {
-        props.navigation.navigate('Rednet')
-    }
+        let error = false
+        if(!maleRadioButton && !femaleRadioButton){
+            error = true;
+            setgenderSelected(false);
+        }
+        if (!error) {
+            console.log("User Name: " + userName)
+            console.log("Phone No: " + phoneNo)
+            console.log("Password: " + password1)
+            console.log("Male: " + maleRadioButton)
+            console.log("Female: " + femaleRadioButton)
+            console.log("Registered as blood donor: " + bloodDonorRB)
+            console.log("Registered as conveyance provider: " + ConveyanceVolunteerRB)
 
-    const [userName, setuserName] = useState('');
-    const [emptyName, setemptyName] = useState(false);
+
+            props.navigation.navigate('Rednet')
+        }
+    }
 
     const nextButtonHandler = () => {
         let error = false;
-        if(emptyName.length <= 2)
-        {
+        if (userName.length <= 2) {
             setemptyName(true)
             error = true
         }
-
-
-        if(!error)
-        {
-            setmoreUserDetails(prevState => !prevState)
+        if (phoneNo.length <= 0) {
+            setemptyphoneNo(true)
+            error = true
+        }
+        else if (phoneNo.length <= 10) {
+            setvalidPhoneno(false)
+            error = true
+        }
+        if (password1.length <= 4) {
+            setemptypassword1(true)
+            error = true
+        }
+        if (password2.length <= 4) {
+            setemptypassword2(true)
+            error = true
+        }
+        if (!error) {
+            if (password1 != password2) {
+                setpasswordMatch(false)
+            }
+            else {
+                setmoreUserDetails(prevState => !prevState)
+            }
         }
 
     }
-
-
 
     const usernameHandler = name => {
         setuserName(name)
         if (userName.length >= 2) {
             setemptyName(false)
+        }
+        else {
+            setemptyName(true)
+        }
+    }
+    const phonenoHandler = phoneno => {
+        setphoneNo(phoneno.replace(/[^0-9]/g, ''))
+        if (phoneno.length > 0) {
+            setemptyphoneNo(false)
+            setvalidPhoneno(true)
+        }
+        else {
+            setemptyphoneNo(true)
+        }
+    }
+    const password1Handler = password1 => {
+        setpassword1(password1)
+        if (password1.length >= 4) {
+            setemptypassword1(false)
+            setpasswordMatch(true)
+        }
+        else {
+            setemptypassword1(true)
+        }
+    }
+    const password2Handler = password2 => {
+        setpassword2(password2)
+        if (password2.length >= 4) {
+            setemptypassword2(false)
+            setpasswordMatch(true)
+        }
+        else {
+            setemptypassword2(true)
         }
     }
 
@@ -85,15 +161,15 @@ const SignupScreen = props => {
                             keyboardType='default'
                             placeholder='Enter User name'
                             onChangeText={usernameHandler}
+                            value={userName}
                             style={styles.input}
                         />
                     </View>
-                    {(emptyPhone || !validPhoneNo) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
+                    {(emptyName) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
                         <View style={{ marginTop: "1%" }}>
                             <MaterialIcons name='error-outline' size={17} color='#ff890a' />
                         </View>
-                        {emptyPhone && <Text style={styles.inputError}>Phone No can not be empty.</Text>}
-                        {!validPhoneNo && <Text style={styles.inputError}>Phone number not Found..!!</Text>}
+                        {emptyName && <Text style={styles.inputError}>Minimum length should be 2.</Text>}
                     </View>}
 
 
@@ -107,9 +183,19 @@ const SignupScreen = props => {
                             label='phoneno'
                             keyboardType='number-pad'
                             placeholder='Enter Phone no'
+                            onChangeText={phonenoHandler}
+                            value={phoneNo}
                             style={styles.input}
                         />
                     </View>
+                    {(emptyphoneNo || !validPhoneno) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
+                        <View style={{ marginTop: "1%" }}>
+                            <MaterialIcons name='error-outline' size={17} color='#ff890a' />
+                        </View>
+                        {emptyphoneNo && <Text style={styles.inputError}>Phone number can not be empty.</Text>}
+                        {!validPhoneno && <Text style={styles.inputError}>Enter valid Phone number.</Text>}
+                    </View>}
+
 
                     <View style={{ ...styles.inputField }}>
                         <View style={styles.icon}>
@@ -121,6 +207,8 @@ const SignupScreen = props => {
                             label='password'
                             keyboardType='default'
                             placeholder='Enter Password'
+                            onChangeText={password1Handler}
+                            value={password1}
                             secureTextEntry={passwordVisible1 ? false : true}
                             style={styles.input}
                         />
@@ -129,10 +217,17 @@ const SignupScreen = props => {
                                 name={passwordVisible1 ? 'ios-eye' : 'ios-eye-off'}
                                 size={25}
                                 color='white'
-                                onPress={password1Handler}
+                                onPress={password1SecurityHandler}
                             />
                         </View>
                     </View>
+                    {(emptypassword1) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
+                        <View style={{ marginTop: "1%" }}>
+                            <MaterialIcons name='error-outline' size={17} color='#ff890a' />
+                        </View>
+                        {emptypassword1 && <Text style={styles.inputError}>Minimum length should be 5.</Text>}
+                    </View>}
+
 
                     <View style={{ ...styles.inputField }}>
                         <View style={styles.icon}>
@@ -144,6 +239,8 @@ const SignupScreen = props => {
                             label='password'
                             keyboardType='default'
                             placeholder='Enter Confirm Password'
+                            onChangeText={password2Handler}
+                            value={password2}
                             secureTextEntry={passwordVisible2 ? false : true}
                             style={styles.input}
                         />
@@ -152,10 +249,18 @@ const SignupScreen = props => {
                                 name={passwordVisible2 ? 'ios-eye' : 'ios-eye-off'}
                                 size={25}
                                 color='white'
-                                onPress={password2Handler}
+                                onPress={password2SecurityHandler}
                             />
                         </View>
                     </View>
+                    {(emptypassword2 || !passwordMatch) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
+                        <View style={{ marginTop: "1%" }}>
+                            <MaterialIcons name='error-outline' size={17} color='#ff890a' />
+                        </View>
+                        {emptypassword2 && <Text style={styles.inputError}>Minimum length should be 5.</Text>}
+                        {!passwordMatch && <Text style={styles.inputError}>Passwords didn`t match.</Text>}
+                    </View>}
+
 
                     <View style={{ ...styles.button, ...{ marginTop: 20 } }} >
                         <Button title='Next' color='#181c1b' onPress={nextButtonHandler} />
@@ -182,7 +287,7 @@ const SignupScreen = props => {
                             id="email"
                             label='email'
                             keyboardType='default'
-                            placeholder='Enter Email'
+                            placeholder='Enter Email (Optional)'
                             style={styles.input}
                         />
                     </View>
@@ -246,6 +351,12 @@ const SignupScreen = props => {
                             </View>
                         </View>
                     </View>
+                    {(!genderSelected) && <View style={{ flexDirection: 'row', marginLeft: "16%" }}>
+                        <View style={{ marginTop: "1%" }}>
+                            <MaterialIcons name='error-outline' size={17} color='#ff890a' />
+                        </View>
+                        <Text style={styles.inputError}>Please select gender.</Text>
+                    </View>}
 
                     <View style={styles.inputField}>
                         <View style={styles.icon}>

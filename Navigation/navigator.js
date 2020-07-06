@@ -90,8 +90,8 @@ const MainDrawer = createDrawerNavigator({
 })
 
 const AuthNavigator = createStackNavigator({
-    Signup: SignupScreen,
-    Login: LoginScreen
+    Login: LoginScreen,
+    Signup: SignupScreen
 },
     {
         defaultNavigationOptions: {
