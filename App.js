@@ -7,9 +7,11 @@ import profileReducer from './Store/Reducers/profile';
 import FriendReducer from './Store/Reducers/friends';
 import NotificationReducer from './Store/Reducers/notification';
 import DonorReducer from './Store/Reducers/donor';
+import UserReducer from './Store/Reducers/user';
 import { SafeAreaView, View, StatusBar } from 'react-native';
 
 const rootReducer = combineReducers({
+  user: UserReducer,
   profile: profileReducer,
   friends: FriendReducer,
   notification: NotificationReducer,

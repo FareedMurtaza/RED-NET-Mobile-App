@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 const FriendsScreen = props => {
     const friendsList= useSelector(state =>  state.friends.userFriends);
-
     return <FriendsList friendsData= {friendsList} navigation={props.navigation} />
 }
 

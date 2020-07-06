@@ -90,8 +90,8 @@ const MainDrawer = createDrawerNavigator({
 })
 
 const AuthNavigator = createStackNavigator({
-    Login: LoginScreen, 
-    Signup: SignupScreen
+    Signup: SignupScreen,
+    Login: LoginScreen
 },
     {
         defaultNavigationOptions: {
@@ -104,6 +104,5 @@ const MainNavigator = createSwitchNavigator({
     Auth: AuthNavigator,
     Rednet: MainDrawer
 })
-
 
 export default createAppContainer(MainNavigator);

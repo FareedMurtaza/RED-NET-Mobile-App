@@ -1,6 +1,14 @@
 import Friend from '../Models/friends';
 import Notification from '../Models/Notification';
 import Profile from '../Models/profile';
+import User from '../Models/user';
+
+export const USER = [
+    new User(
+        '03201234567', 
+        'user'
+    )
+]
 
 export const FRIENDS = [
     new Friend(
