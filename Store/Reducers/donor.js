@@ -19,8 +19,8 @@ export default (state = initialState, action) => {
                 donor: {donorsList}
             }
         }
-        default: {state
+        default:
             return state;
-        }
+
     }
 }

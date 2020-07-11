@@ -5,6 +5,18 @@
     "platforms": [
       "android"
     ],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "rednet",
+            "project": "rednet",
+            "authToken": "63c62bde444246c3a7dd85afe539b706b9e1e6997c3149dbb5ed347e16f2abdd"
+          }
+        }
+      ]
+    },
     "android": {
       "package": "com.team.rednet",
       "versionCode": 1

@@ -1,24 +1,21 @@
 import React from 'react';
-import { combineReducers, createStore } from 'redux';
+import { createStore, applyMiddleware,compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from "redux-thunk";
 
 import MainNavigator from './Navigation/navigator';
-import profileReducer from './Store/Reducers/profile';
-import FriendReducer from './Store/Reducers/friends';
-import NotificationReducer from './Store/Reducers/notification';
-import DonorReducer from './Store/Reducers/donor';
-import UserReducer from './Store/Reducers/user';
-import { SafeAreaView, View, StatusBar } from 'react-native';
+import rootReducer from "./Store/Reducers";
+import * as Sentry from 'sentry-expo';
 
-const rootReducer = combineReducers({
-  user: UserReducer,
-  profile: profileReducer,
-  friends: FriendReducer,
-  notification: NotificationReducer,
-  donorsList: DonorReducer
-})
+Sentry.init({
+  dsn: 'https://58a4d42baf78497db94d4740ea7c054e@o418840.ingest.sentry.io/5324542',
+  enableInExpoDevelopment: true,
+  debug: true,
+});
+Sentry.enableInExpoDevelopment = true;
 
-const store = createStore(rootReducer)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 export default function App() {
   return (

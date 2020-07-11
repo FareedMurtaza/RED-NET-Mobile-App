@@ -32,10 +32,9 @@ const MapViewComponent = props => {
 
       try {
         const location = await Location.getCurrentPositionAsync({
-          timeout: 5000, 
+          timeout: 5000,
           maximumAge: 5000
         });
-
         setlongitude(location.coords.longitude);
         setlatitude(location.coords.latitude);
         setlocationFetched(true);
