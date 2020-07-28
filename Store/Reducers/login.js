@@ -1,7 +1,6 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case "LOGIN":
-      console.log(state);
       if (action.payload.type === true)
         return {
           ...state,
@@ -17,6 +16,17 @@ export default (state = {}, action) => {
           data: action.payload.data,
           error: state.error === undefined ? 0 : state.error + 1,
         };
+    case "LOGOUT":
+      return {
+        ...state,
+        isLogin: action.payload,
+        data: null,
+        JSessionID: null,
+        error: undefined,
+        isCancelClicked: true,
+      };
+    case "GET_DATA":
+      return state;
     default:
       return state;
   }

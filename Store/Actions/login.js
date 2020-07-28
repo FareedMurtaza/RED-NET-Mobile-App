@@ -11,5 +11,6 @@ export const Login = ({ PhoneNumber, Password, Role }) => async (dispatch) => {
     dispatch({ type: "LOGIN", payload: { type: false, data: null } });
   }
 };
-
-export default Login;
+export const getData = () => (dispatch) => {
+  dispatch({ type: "GET_DATA", payload: null });
+};

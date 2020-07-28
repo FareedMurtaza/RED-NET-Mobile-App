@@ -23,8 +23,8 @@ class LoginScreen extends React.Component {
       isUrdu: false,
       phoneNo: "",
       password: "",
-      emptyPhone: false,
-      emptyPassword: false,
+      emptyPhone: "",
+      emptyPassword: "",
       validPhoneNo: true,
       validPassword: true,
     };
@@ -34,11 +34,11 @@ class LoginScreen extends React.Component {
   SigninButtonHandler = () => {
     let error = false;
     if (this.state.phoneNo.length === 0) {
-      this.setState({ emptyPhone: true });
+      this.setState({ emptyPhone: "Enter Phone" });
       error = true;
     }
     if (this.state.password.length === 0) {
-      this.setState({ emptyPassword: true });
+      this.setState({ emptyPassword: "Enter Password" });
       error = true;
     }
     if (!error) {
@@ -51,6 +51,9 @@ class LoginScreen extends React.Component {
   };
 
   render() {
+    if (this.props.isLogin) {
+      this.props.navigation.navigate("Rednet");
+    }
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.screen}>
         <View style={styles.imageContainer}>
@@ -76,7 +79,11 @@ class LoginScreen extends React.Component {
                 color: "white",
               }}
               inputContainerStyle={styles.inputField}
-              onChangeText={(text) => this.setState({ phoneNo: text })}
+              onChangeText={(text) =>
+                this.setState({ phoneNo: text, emptyPhone: "" })
+              }
+              errorMessage={this.state.emptyPhone}
+              errorStyle={styles.inputError}
             />
           </View>
           {/*{(this.state.emptyPhone || !this.state.validPhoneNo) && <View style={{flexDirection: 'row', marginLeft: "16%"}}>*/}
@@ -96,7 +103,11 @@ class LoginScreen extends React.Component {
               inputStyle={styles.input}
               leftIcon={{ type: "material", name: "lock", color: "white" }}
               secureTextEntry={true}
-              onChangeText={(text) => this.setState({ password: text })}
+              onChangeText={(text) =>
+                this.setState({ password: text, emptyPassword: "" })
+              }
+              errorMessage={this.state.emptyPassword}
+              errorStyle={styles.inputError}
             />
           </View>
           {/*{(this.state.emptyPassword || !this.state.validPassword) && <View style={{flexDirection: 'row', marginLeft: "16%"}}>*/}
@@ -145,7 +156,7 @@ class LoginScreen extends React.Component {
                   color: "white",
                   textDecorationLine: "underline",
                 }}
-                onPress={() => props.navigation.navigate("Signup")}
+                onPress={() => this.props.navigation.navigate("Signup")}
               >
                 Create new
               </Text>
